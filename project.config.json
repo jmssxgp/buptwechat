@@ -1,0 +1,86 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.5.2",
+	"appid": "wx02e8a5b4f47f726e",
+	"projectname": "diyweapp",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "01动画页面",
+					"pathName": "pages/animation/animation",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "02产品页面",
+					"pathName": "pages/production/production",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "03主题页面",
+					"pathName": "pages/production/theme/theme",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "04元素页面",
+					"pathName": "pages/production/element/element",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "05结果页面",
+					"pathName": "pages/production/result/result",
+					"query": ""
+				}
+			]
+		}
+	}
+}

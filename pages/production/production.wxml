@@ -1,0 +1,22 @@
+<!--production.wxml-->
+<view style="width:100%;height:100%;background-image:url('{{bkimg}}');background-size:100% 100%;">
+  <image mode='scaleToFill' src='{{borderimg}}' style='width:100%;height:100%;position:absolute;'></image>
+
+  <!-- 返回按钮 -->
+  <view style='height:1px;z-index:3;position:absolute;top:120rpx;left:120rpx;' class="return">
+    <navigator url='./theme/theme' open-type="reLaunch" hover-class='none'>
+      <image mode="aspectFill" src="{{returnimg}}" style="width:120rpx;height:60rpx"></image>
+    </navigator>
+  </view>
+  <!-- 两组按钮 -->
+  <view class='production' style="position:relative;top:{{centertop}}rpx;">
+    <navigator url='./element/element' open-type="reLaunch">
+      <button bindtap='BagTap' class='pro1' style="background-image:url('{{pro1}}');background-size:100% 100%;" hover-class='pro-hover'></button>
+    </navigator>
+    <image src='{{pro1tip}}' style='height:43rpx;weight:239rpx;position:relative;top:18rpx;' mode='aspectFit'></image>
+    <navigator url='./element/element' open-type="reLaunch">
+      <button bindtap='CatpetTap' class='pro2' style="background-image:url('{{pro2}}');background-size:100% 100%;" hover-class='pro-hover'></button>
+    </navigator>
+    <image src='{{pro2tip}}' style='height:43rpx;weight:239rpx;position:relative;top:118rpx;' mode='aspectFit'></image>
+  </view>
+</view>

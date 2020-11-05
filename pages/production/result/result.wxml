@@ -1,0 +1,21 @@
+<!--pages/production/result.wxml-->
+<view style="height:60rpx">
+    <button  class='bt' style="background-image:url('{{returnimg}}');background-size:100% 100%;" bindtap='returnTap'></button>
+</view>
+
+<!-- bindlongtap 长按事件-->
+<view class="center">
+  <!-- 披肩结果画布 -->
+  <canvas wx:if="{{production == 'C'}}" canvas-id="canvasC" class="canvas" style='width:100%;height:{{centerh}}rpx;position:relative;' bindlongtap='longtap'></canvas>
+  <!-- 地毯结果画布 -->
+  <canvas wx:if="{{production == 'B'}}" canvas-id="canvasB" class="canvas" style='width:100%;height:{{centerh}}rpx;position:relative;' bindlongtap='longtap'></canvas>
+  <!-- 民族风画布 -->
+  <canvas wx:if="{{production == 'N'}}" canvas-id="canvasN" class="canvas" style='width:100%;height:{{centerh}}rpx;position:relative;' bindlongtap='longtap'></canvas>
+</view>
+
+<view style="height:80rpx;width:540rpx;display:flex;align-items:center;float:right;">
+  <image class='img' mode="aspectFit" src="{{tipimg}}" style='height:50rpx;' />
+</view>
+<view style='height:80rpx;width:750rpx;display:flex;'>
+  <image src='{{logoimg}}' mode='aspectFit' style='height:70%;width:70%;margin:auto'></image>
+</view>

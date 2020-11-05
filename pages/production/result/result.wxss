@@ -1,0 +1,35 @@
+/* pages/production/result.wxss */
+
+.txt {
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top:30px; */
+}
+
+/* 画布边框 */
+
+canvas {
+  border: 1px solid #e0e0e0;
+  background-color: #e0e0e0;
+}
+
+/* 去边框 */
+
+button::after {
+  border: 0;
+}
+
+.bt {
+  float: left;
+  height: 50rpx;
+  width: 100rpx;
+}
+
+.hover {
+  background-color: pink;
+}

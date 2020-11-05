@@ -1,0 +1,62 @@
+/**production.wxss**/
+
+page {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  margin: 0px;
+  background-color: #590c0f;
+}
+
+.rturn {
+  top: 100rpx;
+}
+
+.production {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.pro1 {
+  display: block;
+  width: 380rpx;
+  height: 113rpx;
+  background: transparent;
+  border-color: transparent;
+}
+
+.pro2 {
+  display: block;
+  width: 380rpx;
+  height: 113rpx;
+  top: 100rpx;
+  background: transparent;
+}
+
+/* 去掉默认边框 */
+
+button::after {
+  border: none;
+}
+
+.pro-hover {
+  transform: scale(0.8);
+}
+
+/* 图片出现动画 */
+
+image {
+  animation: fadeIn 1s both;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

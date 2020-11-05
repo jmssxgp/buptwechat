@@ -1,0 +1,212 @@
+<!--pages/production/element/element.wxml-->
+<!--
+  页面改动：2019.2.28 新增需求 
+  添加《多彩民族风》主题下的元素选择界面
+  目前element.wxml页面共有地毯、布包、民族风三套交互样式
+-->
+<!-- 顶部按钮 -->
+<view class="button" style="position:absolute;z-index:2;">
+  <!-- <button class="return" bindtap="ReturnTap" hover-class='hover'> 返回 </button>
+  <button class="submit" bindtap="ResultTap" hover-class='hover'> 完成 </button> -->
+  <image mode="aspectFill" src="{{returnimg}}" class="return" bindtap="ReturnTap"></image>
+  <image wx:if="{{showFinishbt == true}}" mode="aspectFill" src="{{finishimg}}" class="submit" bindtap="ResultTap"></image>
+</view>
+
+<!-- 图片 -->
+<!-- 
+  问题：位置写死，宽高不一致会挪位置 
+  考虑：屏幕位置或固定center宽度
+  border:1px solid pink
+-->
+<view class="center" style='width:80%;height:{{centerheight}}rpx;position:relative;z-index:1;margin-top:120rpx;'>
+
+  <!-- 披肩中begin-->
+  <block wx:if="{{production == 'C'}}">
+    <image mode="aspectFill" src="{{Eimg}}" style='transform:rotate(-90deg);width:{{Eimgwidth}}rpx;height:{{Eimgheight}}rpx;position:absolute;background:#fff;'></image>
+    <image mode="aspectFill" src="{{Mimg}}" style='transform:rotate(-90deg);width:{{Mimgwidth}}rpx;height:{{Mimgheight}}rpx;position:absolute;'></image>
+    <!-- 左上 -->
+    <image mode="aspectFill" src="{{Cimg}}" style='width:{{Cimgwidth}}rpx;height:{{Cimgwidth}}rpx;position:absolute;left:{{CimgleftLT}}rpx;top:{{CimgtopLT}}rpx;'></image>
+    <!-- 左下 -->
+    <image mode="aspectFill" src="{{Cimg}}" style='transform:rotateX(180deg);width:{{Cimgwidth}}rpx;height:{{Cimgwidth}}rpx;position:absolute;left:{{CimgleftLB}}rpx;top:{{CimgtopLB}}rpx;'></image>
+    <!-- 右上 -->
+    <image mode="aspectFill" src="{{Cimg}}" style='transform:rotateY(180deg);width:{{Cimgwidth}}rpx;height:{{Cimgwidth}}rpx;position:absolute;left:{{CimgleftRT}}rpx;top:{{CimgtopRT}}rpx;'></image>
+    <!-- 右下 -->
+    <image mode="aspectFill" src="{{Cimg}}" style='transform:rotateX(180deg) rotateY(180deg);width:{{Cimgwidth}}rpx;height:{{Cimgwidth}}rpx;position:absolute;left:{{CimgleftRB}}rpx;top:{{CimgtopRB}}rpx;'></image>
+    <image wx:if='{{Rimg !=""}}' mode="aspectFill" src="{{Rimg}}" style='transform:rotate(-90deg);width:{{Eimgwidth}}rpx;height:{{Eimgheight}}rpx;position:absolute;{{is_rimg==true?"background:#fff":""}};'></image>
+  </block>
+  <!-- 披肩中end -->
+
+  <!-- 包包中begin -->
+  <block wx:if="{{production == 'B'}}">
+    <image mode="aspectFill" src="{{Pimg}}" style='width:{{Pimgwidth}}rpx;height:{{Pimgwidth}}rpx;position:absolute;bottom:{{Pimgbottom}}rpx;background:#fff;'></image>
+  </block>
+  <!-- 包包中end -->
+
+  <!-- 民族风中样式TODO -->
+  <block wx:if="{{production == 'N'}}">
+    <image mode="aspectFill" src="{{Nimg}}" style='width:{{Nimgwitdth}}rpx;height:{{Nimgheight}}rpx;position:absolute;bottom:{{Pimgbottom}}rpx;background:#fff;'>
+    </image>
+<!-------------------------------------------8个图标------------------------------------------>
+<!-------------------------------------------1----------------------------------------------->
+        <image mode='aspectFit' src="{{icon0}}" style='width:{{iconsize}}rpx;height:{{iconsize}}rpx;z-index:10;bottom:{{iconbottom+210}}rpx;left:{{iconoffset+200-10}}rpx;position:absolute;' ></image>
+
+        <image mode='aspectFit' src="{{icon1}}" style='width:{{iconsize}}rpx;height:{{iconsize}}rpx;z-index:10;bottom:{{iconbottom+150}}rpx;left:{{iconoffset+200-10}}rpx;position:absolute;' ></image>
+<!-------------------------------------------1----------------------------------------------->
+<!-------------------------------------------2----------------------------------------------->
+        <image mode='aspectFit' src="{{icon2}}" style='width:{{iconsize}}rpx;height:{{iconsize}}rpx;z-index:10;bottom:{{iconbottom+210}}rpx;left:{{iconoffset+260-10}}rpx;position:absolute;' ></image>
+
+        <image mode='aspectFit' src="{{icon3}}" style='width:{{iconsize}}rpx;height:{{iconsize}}rpx;z-index:10;bottom:{{iconbottom+150}}rpx;left:{{iconoffset+260-10}}rpx;position:absolute;' ></image>
+<!-------------------------------------------2----------------------------------------------->
+<!-------------------------------------------3----------------------------------------------->
+        <image mode='aspectFit' src="{{icon4}}" style='width:{{iconsize}}rpx;height:{{iconsize}}rpx;z-index:10;bottom:{{iconbottom+210}}rpx;left:{{iconoffset+320-10}}rpx;position:absolute;' ></image>
+
+        <image mode='aspectFit' src="{{icon5}}" style='width:{{iconsize}}rpx;height:{{iconsize}}rpx;z-index:10;bottom:{{iconbottom+150}}rpx;left:{{iconoffset+320-10}}rpx;position:absolute;' ></image>
+<!-------------------------------------------3----------------------------------------------->
+<!-------------------------------------------4----------------------------------------------->
+        <image mode='aspectFit' src="{{icon6}}" style='width:{{iconsize}}rpx;height:{{iconsize}}rpx;z-index:10;bottom:{{iconbottom+210}}rpx;left:{{iconoffset+380-10}}rpx;position:absolute;' ></image>
+
+        <image mode='aspectFit' src="{{icon7}}" style='width:{{iconsize}}rpx;height:{{iconsize}}rpx;z-index:10;bottom:{{iconbottom+150}}rpx;left:{{iconoffset+380-10}}rpx;position:absolute;' ></image>
+<!-------------------------------------------4----------------------------------------------->
+
+  </block>
+
+</view>
+
+
+<!-- 底部选择栏 共有地毯（C）、布包（B）、-->
+<view class="bottom">
+
+  <!-- 选择栏 -->
+  <!-- 
+    同时显示滑块的数量 display-multiple-items ，可以为小数
+    禁止外部swiper手指触摸滑动 stopTouchMove
+    aspectFit	保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。
+    swiper-item 添加 padding-right:5px 尾部会不能到底
+    previous-margin="15rpx" next-margin="15rpx"
+
+    问题：选择带框后，下一个tab会默认带框【解决：改变动画时长 duration="100"】
+  -->
+
+  <!-- 披肩底部（1）begin -->
+  <block wx:if="{{production == 'C'}}">
+    <swiper current="{{indexb}}" vertical="true" duration="100" style="height:153rpx;">
+      <swiper-item wx:for="{{carpet}}" style="background:#ffffff;" catchtouchmove="stopTouchMove">
+        <view style="height:153rpx;overflow:show;">
+
+          <swiper current="0" display-multiple-items="5" style="margin:10rpx 18rpx;">
+            <swiper-item wx:for="{{imgURL}}" >
+              <view style="height:120rpx;overflow:show;">
+                <image src="{{item}}" data-num="{{index}}" bindtap='swipclick' mode="aspectFit" style="width:130rpx;height:130rpx;overflow:show;" class="{{select==index?'border':''}}" />
+              </view>
+            </swiper-item>
+          </swiper>
+
+        </view>
+      </swiper-item>
+    </swiper>
+  </block>
+  <!-- 披肩底部（1）end -->
+
+  <!-- 布包底部（1）begin -->
+  <block wx:if="{{production == 'B'}}">
+    <swiper current="{{indexb}}" vertical="true" duration="100" style="height:153rpx;">
+      <swiper-item wx:for="{{bag}}" style="background:#ffffff;" catchtouchmove="stopTouchMove">
+        <view style="height:153rpx;">
+
+          <swiper current="0" display-multiple-items="5" style="margin:10rpx 18rpx;">
+            <swiper-item wx:for="{{imgURL}}" >
+              <view style=" height:132rpx;">
+                <image src="{{item}}" data-num="{{index}}" bindtap='swipclick' mode="aspectFit " style="width:130rpx;height:130rpx;overflow:show;" class="{{select==index?'border':''}}" />
+              </view>
+            </swiper-item>
+          </swiper>
+
+        </view>
+      </swiper-item>
+    </swiper>
+  </block>
+  <!-- 布包底部（1）end -->
+
+  <!-- TODO 民族底部（1）begin-->
+  <block wx:if="{{production == 'N'}}">
+    <swiper current="{{indexb}}" vertical="true" duration="100" style="height:153rpx;">
+      <swiper-item wx:for="{{bag}}" style="background:#ffffff;" catchtouchmove="stopTouchMove">
+        <view style="height:153rpx;">
+
+          <swiper current="0" display-multiple-items="5" style="margin:10rpx 18rpx;">
+            <swiper-item wx:for="{{nImgURL}}" >
+              <view style=" height:132rpx;">
+                <image src="{{item}}" data-num="{{index}}" bindtap='swipclick' mode="aspectFit " style="width:130rpx;height:130rpx;overflow:show;" class="{{select==index?'border':''}}" />
+              </view>
+            </swiper-item>
+          </swiper>
+
+        </view>
+      </swiper-item>
+    </swiper>
+  </block>
+  <!-- TODO 民族底部（1）end-->
+
+  <!-- 按钮：地毯（边框，四角，中心）；布包（图案，颜色） -->
+  <!-- 
+  注意：data-current="{{index}} "
+  问题： 
+    1.背景图片不能缩放  background:{{item.color}} url('{{item.url}}') no-repeat center center;color:#ffffff;background-size：50px 30px;
+    2.图片不能显示 img 被挤下去了
+    3.view 点击hover-class 无效【解决：样式 加 !important】，但点击完后回原色
+    4.border-left:1px solid black 一个不见
+  -->
+
+  <!-- 披肩底部（2）begin -->
+  <block wx:if="{{production == 'C'}}">
+    <scroll-view scroll-x style="height:83rpx;width:100%;">
+      <view wx:for="{{carpet}}" style="width:33.3%;display:inline-block;">
+        <button bindtap='changeview' style="height:83rpx;background:{{index==indexb? '#550508' : '#a28081'}} url('{{item.url}}') no-repeat;background-size:100% 100%;border-left:1px solid #fff;border-right:1px solid #fff" data-current="{{index}}"></button>
+      </view>
+    </scroll-view>
+  </block>
+  <!-- 披肩底部（2）end -->
+
+  <!-- 布包底部（2）begin -->
+  <block wx:if="{{production == 'B'}}">
+    <scroll-view scroll-x style="height:83rpx;width:100%;">
+      <view wx:for="{{bag}}" style="width:50%;display:inline-block;">
+        <button bindtap='changeview' style="height:83rpx;background:{{index==indexb? '#550508' : '#a28081'}} url('{{item.url}}') no-repeat;background-size:100% 100%;border-left:1px solid #fff;border-right:1px solid #fff" data-current="{{index}}"></button>
+      </view>
+    </scroll-view>
+  </block>
+  <!-- 布包底部（2）end -->
+
+  <!-- 民族风TODO-->
+  <block wx:if="{{production == 'N'}}">
+    <scroll-view scroll-x style="height:83rpx;width:100%;">
+      <view wx:for="{{nationality}}" style="width:100%;display:inline-block;">
+            <!-- background:{{index==indexb? '#550508' : '#a28081'}} -->
+        <button bindtap='changeview' style="height:83rpx;background:#ffffff url('{{item.url}}') no-repeat;background-size:100% 100%;border-left:1px solid #fff;border-right:1px solid #fff" data-current="{{index}}"></button>
+      </view>
+    </scroll-view>
+  </block>
+
+  <block wx:if="{{production == 'B'}}">
+    <view style="height:83rpx;width:100%;">
+    <button bindtap='enablebt' style="background:{{enablecolor==true?'#550508':'#e0e0e0'}} url('{{autoimg}}') no-repeat ;background-size:100% 100%;border-top:1px solid #fff">自动</button>
+  </view>
+  </block>
+
+    <block wx:if="{{production == 'C'}}">
+    <view style="height:83rpx;width:100%;">
+    <button bindtap='enablebt' style="background:{{enablecolor==true?'#550508':'#e0e0e0'}} url('{{autoimg}}') no-repeat ;background-size:100% 100%;border-top:1px solid #fff">自动</button>
+  </view>
+  </block>
+
+  <!-- 确认按钮：展示结果图-->
+  <!-- TODO -->
+  <block wx:if="{{production == 'N'}}">
+    <view style="height:83rpx;width:100%;">
+    <button bindtap='nRandomButton' style="background:#550508 url('{{autoimg}}') no-repeat ;background-size:100% 100%;border-top:1px solid #fff">自动</button>
+  </view>
+  </block>
+
+
+
+</view>

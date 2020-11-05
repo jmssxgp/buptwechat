@@ -1,0 +1,32 @@
+<!--animation.wxml-->
+
+<!-- 自动水波纹 -->
+<!--
+<view class="container">
+  <view class="wave">
+    <view class="animate">
+      <view class="w2"></view>
+      <view class="w3"></view>
+      <view class="w4"></view>
+    </view>
+    <view class="content" bindtap="bindViewTap">
+      <image src="{{bkimg}}" class="headImage" mode="cover" />
+    </view>
+  </view>
+</view>
+-->
+
+<!-- 点击水波纹 -->
+<view style="width:100%;height:100%;background-image:url('{{bkimg}}');background-size:100% 100%;">
+  <view class="ripple" style="{{rippleStyle}}"></view>
+  <view class="ripple" style="{{rippleStyle1}}"></view>
+
+  <view class="container" bindtouchstart="containerTap">
+    <!-- USKP0101.png图案 -->
+    <!-- <image class="animtion-outer {{end}} {{outer}}" bindanimationend='animationend' src='{{patternimg}}' mode='scaleToFill'></image> -->
+    <image class="animtion-outer {{outer}}" bindanimationend='animationend' src='{{patternimg}}' mode='scaleToFill'></image>
+    <!-- USKP0101.png边框 -->
+    <!-- <image class="animtion-inner {{end}} {{inner}}" src='https://www.vrwbg.com:8080/mini/image_resources/USKP0101.png' mode='scaleToFill' bindanimationend='animationend'></image> -->
+  </view>
+
+</view>

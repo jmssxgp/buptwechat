@@ -1,0 +1,70 @@
+page {
+  overflow: hidden;
+  position: fixed;
+  margin: 0px;
+  background-color: #590c0f;
+}
+
+.swiper-block {
+  width: 100%;
+}
+
+.swiper-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: unset;
+}
+
+/* 主题图片 */
+
+.slide-image {
+  height: 200rpx;
+  width: 200rpx;
+  border-radius: 50%;
+  box-shadow: 0px 0px 30rpx rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  position: relative;
+  right: 10rpx;
+}
+
+/* 主题文字 */
+
+.slide-text-image {
+  height: 163rpx;
+  width: 40rpx;
+  display: inline-block;
+  position: relative;
+  left: 10rpx;
+}
+
+/* 滑动位置时图片放大位置移动效果 */
+
+.image-active {
+  transform: scale(2) translateX(-40rpx);
+  transition: all 0.3s ease-out 0s;
+  z-index: 2;
+}
+
+.text-active {
+  transform: scale(2) translateX(60rpx);
+  z-index: 2;
+  transition: all 0.3s ease-out 0s;
+}
+
+/* 图片出现动画 */
+
+image {
+  animation: fadeIn 1s both;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

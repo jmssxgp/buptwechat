@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block wx:if="{{!hasUserInfo && canIUse}}">
+      <image class="userinfo-avatar" src="{{miniimg}}" mode="cover"></image>
+      <text style='margin: 20rpx;'>文化图案创艺秀</text>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" style='margin: 40rpx;'> 获取用户头像昵称 </button>
+    </block>
+    <block wx:else>
+      <!-- 点击跳转函数bindViewTap使用 -->
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
