@@ -94,9 +94,15 @@
         <view style="height:153rpx;overflow:show;">
 
           <swiper current="0" display-multiple-items="5" style="margin:10rpx 18rpx;">
-            <swiper-item wx:for="{{imgURL}}" >
+            <swiper-item wx:for="{{imgURL}}">
               <view style="height:120rpx;overflow:show;">
                 <image src="{{item}}" data-num="{{index}}" bindtap='swipclick' mode="aspectFit" style="width:130rpx;height:130rpx;overflow:show;" class="{{select==index?'border':''}}" />
+              </view>
+            </swiper-item>
+            <!-- 添加自定义图片 -->
+            <swiper-item>
+              <view style="height:120rpx; overflow:show;">
+                <view class="add" bindtap="jump2crop" data-type="{{indexb}}"></view>
               </view>
             </swiper-item>
           </swiper>

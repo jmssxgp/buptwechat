@@ -136,12 +136,12 @@ Page({
     index_s: 0 //记录布包上一次的外面滑片的选择,默认为主题
   },
 
-  //根据tab，得到滑片索引（通过 data-current="{{index}}" 得到）
+  //根据tab，得到滑片索引（通过 data-current="{{index}}" 得到）,调整披肩的角隅、边框、主题等
   changeview: function(e) {
     this.setData({
       indexb: e.currentTarget.dataset.current,
     });
-    // console.log("外部滑片indexb:" + this.data.indexb);
+     //console.log("外部滑片indexb:" + this.data.indexb);
 
     if (this.data.select == 0) {
       //不带默认选择框
@@ -151,6 +151,7 @@ Page({
     }
 
     if (app.globalData.production == "C") {
+      // 初始化选择的第一张图片
       if (this.data.indexb == 0) {
         this.data.eURL = "M";
 
@@ -244,7 +245,7 @@ Page({
     }
 
     this.data.imgName = [
-     // this.data.pURL + this.data.tURL + this.data.eURL + "I01",
+      this.data.pURL + this.data.tURL + this.data.eURL + "I01",
       this.data.pURL + this.data.tURL + this.data.eURL + "I02",
       this.data.pURL + this.data.tURL + this.data.eURL + "I03",
       this.data.pURL + this.data.tURL + this.data.eURL + "I04",
@@ -256,9 +257,10 @@ Page({
       this.data.pURL + this.data.tURL + this.data.eURL + "I10",
     ]
 
+    // 切换主题、角隅、边框时，获得新的图片列表
     this.setData({
       imgURL: [
-        // app.globalData.rootURL + this.data.pURL + this.data.tURL + this.data.eURL + "I01.png",
+        app.globalData.rootURL + this.data.pURL + this.data.tURL + this.data.eURL + "I01.png",
         app.globalData.rootURL + this.data.pURL + this.data.tURL + this.data.eURL + "I02.png",
         app.globalData.rootURL + this.data.pURL + this.data.tURL + this.data.eURL + "I03.png",
         app.globalData.rootURL + this.data.pURL + this.data.tURL + this.data.eURL + "I04.png",
@@ -291,8 +293,9 @@ Page({
       Pimg: app.globalData.rootURL + app.globalData.bp_name + this.data.imgformat,
       Nimg: this.data.nImgName[e.currentTarget.dataset.num],
     });
-
+    // 多彩民族
     if(app.globalData.production === 'N'){
+      // console.log("多彩")
       app.globalData.nselectImg = this.data.nImgName[e.currentTarget.dataset.num];
     }
     // console.log("select里面滑片:" + this.data.select);
@@ -709,7 +712,7 @@ Page({
         CimgtopRB: (this.data.centerheight - (this.data.centerheight - 20 - 100)) / 2 + (this.data.centerheight - 20 - 100) - 80 + 2,
       })
     }
-
+    // 根据布包和披肩，有不同的图片类型后缀
     if (app.globalData.production == "C") {
       //地毯默认可跳转结果页面
       this.data.flag = 0;
@@ -760,8 +763,8 @@ Page({
         if (app.globalData.is_return == false) {
           // 顺序进入默认展示图
           this.setData({
-            Pimg: app.globalData.rootURL + 'B02PI020' + this.data.imgformat,
-            Mimg: app.globalData.rootURL + 'C02MI020' + this.data.imgformat
+            Pimg: app.globalData.rootURL + 'B02PI010' + this.data.imgformat,
+            Mimg: app.globalData.rootURL + 'C02MI010' + this.data.imgformat
           });
           //默认获取元素图名
           app.globalData.cm_name = 'C02MI020'
@@ -841,7 +844,7 @@ Page({
     }
 
     this.data.imgName = [
-       // this.data.pURL + this.data.tURL + this.data.eURL + "I01",
+        this.data.pURL + this.data.tURL + this.data.eURL + "I01",
         this.data.pURL + this.data.tURL + this.data.eURL + "I02",
         this.data.pURL + this.data.tURL + this.data.eURL + "I03",
         this.data.pURL + this.data.tURL + this.data.eURL + "I04",
@@ -855,7 +858,7 @@ Page({
 
       this.setData({
         imgURL: [
-          //app.globalData.rootURL + this.data.pURL + this.data.tURL + this.data.eURL + "I01.png",
+          app.globalData.rootURL + this.data.pURL + this.data.tURL + this.data.eURL + "I01.png",
           app.globalData.rootURL + this.data.pURL + this.data.tURL + this.data.eURL + "I02.png",
           app.globalData.rootURL + this.data.pURL + this.data.tURL + this.data.eURL + "I03.png",
           app.globalData.rootURL + this.data.pURL + this.data.tURL + this.data.eURL + "I04.png",
@@ -881,6 +884,15 @@ Page({
   onReady: function() {
     wx.hideLoading()
   },
+
+  // 跳转裁剪
+  jump2crop:function(e){
+    // 从何处跳转过来
+    var type = e.currentTarget.dataset.type;
+    wx.navigateTo({
+      url: '../cropper/cropper?type='+type,
+    })
+  }
 
   // 页面转发按钮
   // onShareAppMessage: function () {

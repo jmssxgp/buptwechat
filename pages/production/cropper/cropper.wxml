@@ -1,0 +1,8 @@
+<!--pages/production/cropper/cropper.wxml-->
+<image-cropper id="image-cropper" disable_ratio="true" bindload="cropperload" bindimageload="loadimage" width="{{imageSize[imageType][0]}}" height="{{imageSize[imageType][1]}}" bindtapcut="clickcut" imgSrc="{{src}}">
+</image-cropper>
+<view class='bottom'>
+  <button bindtap="back">返回</button>
+  <button bindtap="upload">选择图片</button>
+  <button bindtap='submit'>确定</button>
+</view>

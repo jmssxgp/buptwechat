@@ -69,3 +69,34 @@ button {
 .border {
   border: 2px solid #550508;
 }
+
+.add {
+  border: 1px solid;
+  width: 120rpx;
+  height: 120rpx;
+  color: #ccc;
+  transition: color .25s;
+  position: relative;
+}
+
+.add::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80rpx;
+  margin-left: -40rpx;
+  margin-top: -5rpx;
+  border-top: 10rpx solid;
+}
+
+.add::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 80rpx;
+  margin-left: -5rpx;
+  margin-top: -40rpx;
+  border-left: 10rpx solid;
+ }
