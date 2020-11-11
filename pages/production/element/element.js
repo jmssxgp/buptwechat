@@ -133,7 +133,8 @@ Page({
     dissatisfaction: false, //用户不满意结果，重新选择
     once_auto: 1, //自动生成按钮只可点击一次
     no_choosetip: 0, //双击配色按钮，可以取消，判断提示次数
-    index_s: 0 //记录布包上一次的外面滑片的选择,默认为主题
+    index_s: 0, //记录布包上一次的外面滑片的选择,默认为主题
+    customSelect: -1
   },
 
   //根据tab，得到滑片索引（通过 data-current="{{index}}" 得到）,调整披肩的角隅、边框、主题等
@@ -141,6 +142,8 @@ Page({
     this.setData({
       indexb: e.currentTarget.dataset.current,
     });
+    // 切换主题边框角隅时，更新自定义图片列表
+    this.initCustomImage(this.data.indexb);
      //console.log("外部滑片indexb:" + this.data.indexb);
 
     if (this.data.select == 0) {
@@ -288,6 +291,7 @@ Page({
 
     this.setData({
       select: e.currentTarget.dataset.num,
+      customSelect:-1,
       Rimg: "",
       is_rimg: false,
       Pimg: app.globalData.rootURL + app.globalData.bp_name + this.data.imgformat,
@@ -878,8 +882,52 @@ Page({
     // wx.showShareMenu({
     //   withShareTicket: true
     // })
-
+      // 获取用户的图片列表
+      this.getCustomImage();
   },
+
+  getCustomImage:function(){
+    var subjectType = app.globalData.theme;
+    var openId = app.globalData.openId;
+    var that = this;
+    wx.request({
+      url: 'https://cgo.culturecompute.com:8088/customImage?openId='+openId+"&subjectType="+subjectType,
+      method:"GET",
+      success:function(res){
+        that.setData({
+          customImage: res.data
+        })
+        that.initCustomImage(0);
+      }
+    })
+  },
+
+  // 初始化和刷新展示的图片列表
+  initCustomImage:function(index){
+    var customImage = this.data.customImage;
+    var prod = this.data.production;
+    var images = customImage.c;
+    if(prod === 'B') {
+      images = customImage.b; 
+    }
+    images.map(function(image){
+      image.map(function(i){
+        return app.globalData.customRoot + i;
+      })
+    })
+    this.setData({
+      customImageShow: images[index]
+    })
+  },
+
+  customSwipClick:function(e){
+    var index = e.currentTarget.dataset.index;
+    this.setData({
+      select:-1,
+      customSelect: index
+    })
+  },
+
   // 监听页面初次渲染完成
   onReady: function() {
     wx.hideLoading()

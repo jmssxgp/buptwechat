@@ -1,5 +1,5 @@
 <!--pages/production/cropper/cropper.wxml-->
-<image-cropper id="image-cropper" disable_ratio="true" bindload="cropperload" bindimageload="loadimage" width="{{imageSize[imageType][0]}}" height="{{imageSize[imageType][1]}}" bindtapcut="clickcut" imgSrc="{{src}}">
+<image-cropper id="image-cropper" disable_ratio="true" bindload="cropperload" bindimageload="loadimage" width="{{size[imageType][0]}}" height="{{size[imageType][1]}}" bindtapcut="clickcut" imgSrc="{{src}}">
 </image-cropper>
 <view class='bottom'>
   <button bindtap="back">返回</button>

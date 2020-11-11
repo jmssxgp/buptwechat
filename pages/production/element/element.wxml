@@ -99,6 +99,12 @@
                 <image src="{{item}}" data-num="{{index}}" bindtap='swipclick' mode="aspectFit" style="width:130rpx;height:130rpx;overflow:show;" class="{{select==index?'border':''}}" />
               </view>
             </swiper-item>
+            <!-- 展示自定义图片 -->
+            <swiper-item wx:for="{{customImageShow}}">
+              <view style="height:120px; overflow:hidden">
+                <image src="{{item}}" data-index="{{index}}" bindtap="customSwipClick" mode="aspectFit" style="width:130rpx;height:130rpx;overflow:show;" class="{{customSelect==index?'border':''}}" />
+              </view>
+            </swiper-item>
             <!-- 添加自定义图片 -->
             <swiper-item>
               <view style="height:120rpx; overflow:show;">
@@ -123,6 +129,18 @@
             <swiper-item wx:for="{{imgURL}}" >
               <view style=" height:132rpx;">
                 <image src="{{item}}" data-num="{{index}}" bindtap='swipclick' mode="aspectFit " style="width:130rpx;height:130rpx;overflow:show;" class="{{select==index?'border':''}}" />
+              </view>
+            </swiper-item>
+            <!-- 展示自定义图片 -->
+            <swiper-item wx:for="{{customImageShow}}">
+              <view style="height:120px; overflow:hidden">
+                <image src="{{item}}" data-index="{{index}}" bindtap="customSwipClick" mode="aspectFit" style="width:130rpx;height:130rpx;overflow:show;" class="{{customSelect==index?'border':''}}" />
+              </view>
+            </swiper-item>
+            <!-- 添加自定义图片 -->
+            <swiper-item>
+              <view style="height:120rpx; overflow:show;">
+                <view class="add" bindtap="jump2crop" data-type="{{indexb}}"></view>
               </view>
             </swiper-item>
           </swiper>

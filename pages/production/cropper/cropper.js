@@ -7,11 +7,17 @@ Page({
    */
   data: {
     productionType: 1,
-    imageSize:[
-      [250, 150],
-      [300, 200],
-      [80, 80]
-    ]
+    imageSize:{
+      C:[
+        [250, 150],
+        [300, 200],
+        [80, 80]
+      ],
+      B:[
+        [250, 250],
+        [250, 250]
+      ]
+    }
   },
 
   /**
@@ -19,8 +25,15 @@ Page({
    */
   onLoad: function (options) {
     var type = options.type;
+    var size = [];
+    if (app.globalData.production === 'C'){
+      size = this.data.imageSize.C;
+    }else {
+      size = this.data.imageSize.B;
+    }
     this.setData({
       imageType: type,
+      size: size,
       openId: app.globalData.openId
     })
     this.cropper = this.selectComponent("#image-cropper");
@@ -66,14 +79,13 @@ Page({
   submit(){
     var that = this;
     this.cropper.getImg((obj)=>{
-      console.log("宽度：" + obj.width);
-      console.log("高度：" + obj.height);
       wx.uploadFile({
         filePath: obj.url,
         name: 'file',
-        url: 'http://localhost:8088/uploadImage',
+        url: 'https://cgo.culturecompute.com:8088/uploadImage',
         formData:{
           openId: that.data.openId,
+          subjectType: app.globalData.theme,
           productionType: that.data.productionType,
           imageType: that.data.imageType,
           preName: "image.png"
