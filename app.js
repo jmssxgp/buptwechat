@@ -93,7 +93,7 @@ App({
     //服务器图片root路径
     rootURL: "https://vrwbg-1256403542.image.myqcloud.com/mini/data/",
     //用户自定义图片root路径
-    customRoot: "https:cgo.culturecompute.com:8088/mini/image_custom/",
+    customRoot: "https://cgo.culturecompute.com:8088/mini/image_custom/",
     //rootURL: "https://www.vrwbg.com:8080/mini/data/",
     //rootURL: "https://www.vrwbg.com:8080/mini/image_resources/",
     // rootURL: "https://cgo.culturecompute.com:8088/mini/image_resources/",

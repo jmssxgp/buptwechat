@@ -288,7 +288,7 @@ Page({
 
     //记录布包上一次的外面滑片的选择
     this.data.index_s = 0;
-
+    
     this.setData({
       select: e.currentTarget.dataset.num,
       customSelect:-1,
@@ -910,8 +910,8 @@ Page({
     if(prod === 'B') {
       images = customImage.b; 
     }
-    images.map(function(image){
-      image.map(function(i){
+    images = images.map(function(image){
+      return image.map(function(i){
         return app.globalData.customRoot + i;
       })
     })
@@ -922,9 +922,30 @@ Page({
 
   customSwipClick:function(e){
     var index = e.currentTarget.dataset.index;
+    var that = this;
+    var customImage = this.data.customImage;
+    var prod = this.data.production;
+    var images = customImage.c;
+    if(prod === 'B') {
+      images = customImage.b; 
+    }
+    // 布包
+    if (app.globalData.production == "C") {
+      if (this.data.indexb == 0) {
+        app.globalData.cm_name = images[0][index];
+      }
+      if (this.data.indexb == 1) {
+        app.globalData.ce_name = images[1][index];
+      }
+      if (this.data.indexb == 2) {
+        app.globalData.cc_name = images[2][index];
+      }
+    } 
+    
     this.setData({
       select:-1,
-      customSelect: index
+      customSelect: index,
+      Mimg: that.data.customImageShow[index]
     })
   },
 
