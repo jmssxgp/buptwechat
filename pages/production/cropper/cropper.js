@@ -26,15 +26,18 @@ Page({
   onLoad: function (options) {
     var type = options.type;
     var size = [];
+    var production = 1;
     if (app.globalData.production === 'C'){
       size = this.data.imageSize.C;
     }else {
       size = this.data.imageSize.B;
+      production = 0;
     }
     this.setData({
       imageType: type,
       size: size,
-      openId: app.globalData.openId
+      openId: app.globalData.openId,
+      productionType: production
     })
     this.cropper = this.selectComponent("#image-cropper");
     this.cropper.imgReset();
@@ -91,8 +94,13 @@ Page({
           preName: "image.png"
         }
       })
+      var pages = getCurrentPages();
+      var before = pages[pages.length - 2];
       wx.navigateBack({
-        delta: -1
+        delta: -1,
+        success:function(){
+          before.refreshAfterCrop();
+        }
       })
     });
   },

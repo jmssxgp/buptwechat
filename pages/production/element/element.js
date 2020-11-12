@@ -910,6 +910,7 @@ Page({
     if(prod === 'B') {
       images = customImage.b; 
     }
+    console.log(images)
     images = images.map(function(image){
       return image.map(function(i){
         return app.globalData.customRoot + i;
@@ -929,7 +930,7 @@ Page({
     if(prod === 'B') {
       images = customImage.b; 
     }
-    // 布包
+    // 地毯，生成时传入后台的参数
     if (app.globalData.production == "C") {
       if (this.data.indexb == 0) {
         app.globalData.cm_name = images[0][index];
@@ -940,7 +941,15 @@ Page({
       if (this.data.indexb == 2) {
         app.globalData.cc_name = images[2][index];
       }
-    } 
+    } else {
+      // 布包传入后台的参数
+      if (this.data.indexb == 0) {
+        app.globalData.bp_name = images[0][index];
+      }
+      if (this.data.indexb == 1) {
+        app.globalData.bc_name = images[1][index];
+      } 
+    }
     
     this.setData({
       select:-1,
@@ -952,6 +961,15 @@ Page({
   // 监听页面初次渲染完成
   onReady: function() {
     wx.hideLoading()
+  },
+
+  refreshAfterCrop:function(){
+    console.log("调用");
+    var that = this;
+    setTimeout(function(){
+      that.getCustomImage();
+      that.initCustomImage(that.data.indexb);
+    },1000)
   },
 
   // 跳转裁剪
